@@ -1,0 +1,44 @@
+
+:root {
+    --primary: #4f46e5;
+    --secondary: #818cf8;
+    --accent: #3730a3;
+    --background: #f8fafc;
+    --text: #1e293b;
+}
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+}
+.navbar {
+    background-color: var(--primary);
+    color: white;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+.service-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+}
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.btn-primary:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+.section-header {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+#map { height: 400px; }

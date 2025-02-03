@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Information Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #818cf8;
+            --background: #f8fafc;
+            --text: #1e293b;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        /* blog */
+        .upload-form {
+    background: linear-gradient(145deg, #ffffff, #f3f4f6);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.upload-form h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.upload-form form {
+    display: grid;
+    gap: 20px;
+}
+
+.upload-form input[type="text"],
+.upload-form textarea {
+    width: 97.5%;
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.upload-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.upload-form input[type="file"] {
+    padding: 10px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 2px dashed #ccc;
+    cursor: pointer;
+}
+
+.upload-form button {
+    background: var(--gradient);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+}
+
+.upload-form input:focus,
+.upload-form textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: var(--background);
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-grid, .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+/* Myth buster */
+        .myth-buster {
+    background: linear-gradient(135deg, #4338ca, #3b82f6);
+    padding: 40px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+}
+
+.myth-checker {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.myth-checker textarea {
+    width: 97.5%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text);
+    font-size: 1rem;
+    min-height: 120px;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+.myth-checker button {
+    background: white;
+    color: var(--primary);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.myth-checker button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+#mythResult {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text);
+    display: none;
+}
+
+#mythResult.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.myth-analysis {
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.loading {
+    color: #4338ca;
+    text-align: center;
+    padding: 20px;
+}
+
+.error {
+    color: #dc2626;
+    text-align: center;
+    padding: 20px;
+}
+/* educational */
+.tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 5px;
+    background: #f1f5f9;
+    border-radius: 15px;
+}
+
+.tab-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: var(--text);
+    flex: 1;
+}
+
+.tab-btn.active {
+    background: var(--gradient);
+    color: white;
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2);
+}
+
+.tab-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.content-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+}
+
+.content-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.content-info {
+    padding: 20px;
+}
+
+.content-info h3 {
+    color: var(--text);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.content-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.content-meta i {
+    color: var(--primary);
+}
+
+.podcast-player {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.webinar-date {
+    background: var(--gradient);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+/* news */
+.news-container {
+    position: relative;
+    padding: 0 30px;
+    margin: 15px 0;
+}
+
+.news-grid {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+.card {
+    width: 200px;
+    flex: 0 0 auto;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.card img {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+}
+
+.card-content {
+    padding: 12px;
+}
+
+.card h3 {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card p {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-meta {
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+}
+
+
+
+.refresh-btn {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+    transform: scale(1.1);
+}
+
+.refresh-btn.spinning i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+        .upload-form {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+        <!-- Myth Buster -->
+        <section class="section myth-buster">
+            <h2 style="color: #ffffff;">Myth Buster</h2>
+            <div class="myth-checker">
+                <textarea id="mythInput" placeholder="Enter a health claim to verify..."></textarea>
+                <button onclick="checkMyth()">Verify Claim</button>
+                <div id="mythResult"></div>
+            </div>
+        </section>
+    <!-- Blog Section -->
+    <section class="section">
+        <h2>Health Blogs</h2>
+        <div class="upload-form">
+            <h3>Share Your Blog</h3>
+            <form id="blogForm">
+                <input type="text" placeholder="Title" required>
+                <textarea placeholder="Content" required></textarea>
+                <input type="file" accept="image/*">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+        <div class="blog-grid" id="blogGrid">
+            <!-- Default blogs loaded via JavaScript -->
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Latest Health News</h2>
+            <button class="refresh-btn" onclick="refreshNews()">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
+        <div class="news-container">
+            
+            <div class="news-grid" id="newsGrid">
+                <!-- News cards will be loaded here -->
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Expert Insights -->
+    <section class="section">
+        <h2>Expert Insights</h2>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('articles')">Articles</button>
+            <button class="tab-btn" onclick="switchTab('podcasts')">Podcasts</button>
+            <button class="tab-btn" onclick="switchTab('webinars')">Webinars</button>
+        </div>
+    
+        <div class="tab-content" id="articles">
+            <div class="content-card">
+                <img src="vacc.jpg" alt="Vaccine Research" class="content-image">
+                <div class="content-info">
+                    <h3>Latest Advances in Vaccine Technology</h3>
+                    <div class="content-meta">
+                        <i class="fas fa-user"></i>
+                        <span>Dr. Sarah Johnson</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-card">
+                <img src="imunity.jpg" alt="Immunity" class="content-image">
+                <div class="content-info">
+                    <h3>Understanding Your Immune System</h3>
+                    <div class="content-meta">
+                        <i class="fas fa-user"></i>
+                        <span>Dr. Michael Chen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="tab-content" id="podcasts" style="display: none;">
+            <div class="content-card">
+                <img src="health.jpg" alt="Health Talk" class="content-image">
+                <div class="content-info">
+                    <h3>Health in the Digital Age</h3>
+                    <div class="content-meta">
+                        <i class="fas fa-microphone"></i>
+                        <span>45 mins</span>
+                    </div>
+                    <audio class="podcast-player" controls>
+                        <source src="podcast1.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+    
+        <div class="tab-content" id="webinars" style="display: none;">
+            <div class="content-card">
+                <img src="last.jpg" alt="Webinar" class="content-image">
+                <div class="content-info">
+                    <h3>Pandemic Preparedness Workshop</h3>
+                    <div class="content-meta">
+                        <i class="fas fa-calendar"></i>
+                        <span>March 25, 2024</span>
+                    </div>
+                    <div class="webinar-date">Live: 2:00 PM EST</div>
+                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/SAMPLE_ID" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Emergency Kit Tutorial -->
+    <section class="section">
+        <h2>Emergency Kit Tutorial</h2>
+        <div class="video-container" id="videoContainer">
+            <!-- YouTube videos loaded via API -->
+        </div>
+    </section>
+
+    <script>
+        // Default blog posts
+// Default blog data
+const defaultBlogs = [
+    {
+        title: "Understanding Pandemic Preparedness",
+        content: "Learn about essential steps for pandemic preparedness...",
+        image: "11.jpg",
+        date: "2024-03-15"
+    },
+    {
+        title: "Immunity Boosting Foods",
+        content: "Discover natural ways to strengthen your immune system...",
+        image: "22.jpg",
+        date: "2024-03-14"
+    },
+    {
+        title: "Mental Health During Crisis",
+        content: "Tips for maintaining mental wellness during challenging times...",
+        image: "33.jpg",
+        date: "2024-03-13"
+    }
+];
+
+// Blog display function
+function displayBlogs() {
+    const blogGrid = document.getElementById('blogGrid');
+    blogGrid.innerHTML = defaultBlogs.map(blog => `
+        <div class="content-card">
+            <img src="${blog.image}" alt="${blog.title}" class="content-image">
+            <div class="content-info">
+                <h3>${blog.title}</h3>
+                <p>${blog.content}</p>
+                <div class="content-meta">
+                    <i class="fas fa-calendar"></i>
+                    <span>${blog.date}</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', () => {
+    displayBlogs();
+});
+
+        // YouTube API Integration
+        function loadYouTubeVideos() {
+            const API_KEY = 'YOUR_YOUTUBE_API_KEY';
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=emergency+kit+tutorial&type=video&key=${API_KEY}`)
+                .then(response => response.json())
+                .then(data => {
+                    const videoContainer = document.getElementById('videoContainer');
+                    data.items.forEach(item => {
+                        videoContainer.innerHTML += `
+                            <iframe width="100%" height="315"
+                                src="https://www.youtube.com/embed/${item.id.videoId}"
+                                frameborder="0" allowfullscreen>
+                            </iframe>
+                        `;
+                    });
+                });
+        }
+
+
+        // News API Integration
+        
+        const NEWS_API_KEY = '20d94ce043114cd68374776da96f8b69';
+const MEDICAL_KEYWORDS = 'medical OR healthcare OR disease OR treatment OR medicine OR hospital OR doctor OR clinic OR patient OR diagnosis OR vaccine OR pandemic OR epidemic';
+
+async function loadNews() {
+    const newsGrid = document.getElementById('newsGrid');
+    newsGrid.innerHTML = '<div class="loading">Loading medical news...</div>';
+    
+    try {
+        const response = await fetch(`https://newsapi.org/v2/everything?` + 
+            `q=${MEDICAL_KEYWORDS}&` +
+            `language=en&` +
+            `sortBy=publishedAt&` +
+            `apiKey=${NEWS_API_KEY}`);
+        
+        const data = await response.json();
+        
+        if (data.articles && data.articles.length > 0) {
+            const medicalNews = data.articles
+                .filter(article => 
+                    article.title?.toLowerCase().match(/medical|health|disease|treatment|doctor|hospital|clinic|medicine|vaccine|pandemic|epidemic/g)
+                )
+                .slice(0, 6);
+
+            newsGrid.innerHTML = medicalNews.map(article => `
+                <div class="card">
+                    <img src="${article.urlToImage || 'medical-placeholder.jpg'}" 
+                         alt="${article.title}"
+                         onerror="this.src='medical-placeholder.jpg'">
+                    <div class="card-content">
+                        <h3>${article.title}</h3>
+                        <div class="news-meta">
+                            <span>
+                                <i class="fas fa-calendar"></i>
+                                ${new Date(article.publishedAt).toLocaleDateString()}
+                            </span>
+                            <a href="${article.url}" target="_blank" class="read-more">
+                                Read →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            throw new Error('No medical news found');
+        }
+    } catch (error) {
+        console.error('Error loading news:', error);
+        newsGrid.innerHTML = `
+            <div class="error">
+                <i class="fas fa-exclamation-circle"></i>
+                Unable to load medical news. Please try again later.
+            </div>`;
+    }
+}
+
+async function refreshNews() {
+    const refreshBtn = document.querySelector('.refresh-btn');
+    refreshBtn.classList.add('spinning');
+    await loadNews();
+    refreshBtn.classList.remove('spinning');
+}
+
+// Load news on page load
+window.addEventListener('DOMContentLoaded', loadNews);
+
+// mythbuster
+        async function checkMyth() {
+    const mythInput = document.getElementById('mythInput').value;
+    const resultDiv = document.getElementById('mythResult');
+    const button = document.querySelector('.myth-checker button');
+
+    if (!mythInput.trim()) return;
+
+    // Show loading state
+    button.disabled = true;
+    button.innerHTML = 'Verifying...';
+    resultDiv.innerHTML = '<div class="loading">Analyzing claim...</div>';
+    resultDiv.classList.add('show');
+
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAP5Wdm2CiiGZymRnxzEokkXJQ7ZnlFa5w`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: `Act as a medical fact checker. Verify this health claim and provide a detailed analysis with scientific evidence: "${mythInput}". Format response with Verdict (True/False/Partially True), Explanation, and Scientific Sources.`
+                    }]
+                }]
+            })
+        });
+
+        const data = await response.json();
+        const analysis = data.candidates[0].content.parts[0].text;
+
+        resultDiv.innerHTML = `
+            <div class="myth-analysis">
+                ${analysis.replace(/\n/g, '<br>')}
+            </div>
+        `;
+    } catch (error) {
+        resultDiv.innerHTML = '<div class="error">Sorry, verification failed. Please try again.</div>';
+    } finally {
+        button.disabled = false;
+        button.innerHTML = 'Verify Claim';
+    }
+}
+function switchTab(tabName) {
+    // Hide all content
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show selected content and activate tab
+    document.getElementById(tabName).style.display = 'grid';
+    document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+}
+    </script>
+</body>
+</html>

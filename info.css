@@ -1,0 +1,387 @@
+:root {
+    --primary: #4f46e5;
+    --secondary: #818cf8;
+    --background: #f8fafc;
+    --text: #1e293b;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+/* blog */
+.upload-form {
+background: linear-gradient(145deg, #ffffff, #f3f4f6);
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+margin-bottom: 30px;
+}
+
+.upload-form h3 {
+color: var(--primary);
+margin-bottom: 20px;
+font-size: 1.5rem;
+}
+
+.upload-form form {
+display: grid;
+gap: 20px;
+}
+
+.upload-form input[type="text"],
+.upload-form textarea {
+width: 97.5%;
+padding: 12px 15px;
+border: 2px solid #eee;
+border-radius: 10px;
+font-size: 1rem;
+transition: all 0.3s ease;
+}
+
+.upload-form textarea {
+min-height: 150px;
+resize: vertical;
+}
+
+.upload-form input[type="file"] {
+padding: 10px;
+background: #f8fafc;
+border-radius: 10px;
+border: 2px dashed #ccc;
+cursor: pointer;
+}
+
+.upload-form button {
+background: var(--gradient);
+color: white;
+padding: 12px 25px;
+border: none;
+border-radius: 10px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.upload-form button:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+}
+
+.upload-form input:focus,
+.upload-form textarea:focus {
+border-color: var(--primary);
+outline: none;
+box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: var(--background);
+}
+
+.section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.blog-grid, .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+/* Myth buster */
+.myth-buster {
+background: linear-gradient(135deg, #4338ca, #3b82f6);
+padding: 40px;
+border-radius: 20px;
+color: white;
+box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+}
+
+.myth-checker {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+padding: 25px;
+border-radius: 15px;
+margin-top: 20px;
+}
+
+.myth-checker textarea {
+width: 97.5%;
+padding: 15px;
+border: none;
+border-radius: 10px;
+background: rgba(255, 255, 255, 0.9);
+color: var(--text);
+font-size: 1rem;
+min-height: 120px;
+margin-bottom: 15px;
+resize: vertical;
+}
+
+.myth-checker button {
+background: white;
+color: var(--primary);
+padding: 12px 30px;
+border: none;
+border-radius: 10px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.myth-checker button:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+#mythResult {
+margin-top: 20px;
+padding: 15px;
+border-radius: 10px;
+background: rgba(255, 255, 255, 0.9);
+color: var(--text);
+display: none;
+}
+
+#mythResult.show {
+display: block;
+animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.myth-analysis {
+line-height: 1.6;
+font-size: 1rem;
+}
+
+.loading {
+color: #4338ca;
+text-align: center;
+padding: 20px;
+}
+
+.error {
+color: #dc2626;
+text-align: center;
+padding: 20px;
+}
+/* educational */
+.tabs {
+display: flex;
+gap: 15px;
+margin-bottom: 30px;
+padding: 5px;
+background: #f1f5f9;
+border-radius: 15px;
+}
+
+.tab-btn {
+padding: 12px 25px;
+border: none;
+border-radius: 10px;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.3s ease;
+background: transparent;
+color: var(--text);
+flex: 1;
+}
+
+.tab-btn.active {
+background: var(--gradient);
+color: white;
+box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2);
+}
+
+.tab-content {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 20px;
+}
+
+.content-card {
+background: white;
+border-radius: 15px;
+overflow: hidden;
+transition: transform 0.3s ease;
+box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.content-card:hover {
+transform: translateY(-5px);
+}
+
+.content-image {
+width: 100%;
+height: 200px;
+object-fit: cover;
+}
+
+.content-info {
+padding: 20px;
+}
+
+.content-info h3 {
+color: var(--text);
+margin-bottom: 10px;
+font-size: 1.2rem;
+}
+
+.content-meta {
+display: flex;
+align-items: center;
+gap: 10px;
+color: #64748b;
+font-size: 0.9rem;
+}
+
+.content-meta i {
+color: var(--primary);
+}
+
+.podcast-player {
+width: 100%;
+margin-top: 10px;
+border-radius: 8px;
+overflow: hidden;
+}
+
+.webinar-date {
+background: var(--gradient);
+color: white;
+padding: 5px 10px;
+border-radius: 5px;
+display: inline-block;
+margin-top: 10px;
+}
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+/* news */
+.news-container {
+position: relative;
+padding: 0 30px;
+margin: 15px 0;
+}
+
+.news-grid {
+display: flex;
+gap: 8px;
+overflow-x: auto;
+scroll-behavior: smooth;
+padding: 10px 0;
+}
+
+.card {
+width: 200px;
+flex: 0 0 auto;
+background: white;
+border-radius: 6px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.card img {
+width: 200px;
+height: 120px;
+object-fit: cover;
+border-radius: 6px 6px 0 0;
+}
+
+.card-content {
+padding: 12px;
+}
+
+.card h3 {
+font-size: 0.9rem;
+line-height: 1.3;
+margin-bottom: 6px;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+
+.card p {
+font-size: 0.8rem;
+color: #64748b;
+margin-bottom: 6px;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+
+.news-meta {
+font-size: 0.75rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 6px;
+}
+
+
+
+.refresh-btn {
+background: var(--gradient);
+color: white;
+border: none;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+transform: scale(1.1);
+}
+
+.refresh-btn.spinning i {
+animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+100% { transform: rotate(360deg); }
+}
+.upload-form {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+}

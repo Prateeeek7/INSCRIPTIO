@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Disease Monitoring</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link rel="stylesheet" href="realtime.css" />
+    <head>
+<div class="dashboard">
+    <div class="sidebar">
+        <h2>Disease Statistics</h2>
+        <div class="stats-card">
+            <h3>Global Cases</h3>
+            <div id="globalCases">Loading...</div>
+        </div>
+        <div class="stats-card">
+            <h3>Active Outbreaks</h3>
+            <div id="activeOutbreaks">Loading...</div>
+        </div>
+        <!-- Add Air and Water Quality cards -->
+        <div class="stats-card">
+            <h3>Air Quality</h3>
+            <div id="airQuality">Loading...</div>
+        </div>
+        <div class="stats-card">
+            <h3>Water Quality</h3>
+            <div id="waterQuality">Loading...</div>
+        </div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Disease</th>
+                    <th>Cases</th>
+                    <th>Region</th>
+                </tr>
+            </thead>
+            <tbody id="diseaseData">
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <div id="map"></div>
+</div>
+ -->
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="realtime.js" defer></script>
+</body>
+</html>

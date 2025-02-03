@@ -1,0 +1,132 @@
+
+:root {
+    --primary: #4f46e5;
+    --secondary: #818cf8;
+    --accent: #3730a3;
+    --background: #f8fafc;
+    --text: #1e293b;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    font-family: 'Arial', sans-serif;
+}
+
+.signup-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.15);
+}
+
+.signup-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.signup-header h1 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.signup-header p {
+    color: var(--text);
+    opacity: 0.8;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.form-group input {
+    width: 93%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.aadhaar-container {
+    display: flex;
+    gap: 10px;
+}
+
+.verify-button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.verify-button:hover {
+    background: var(--primary);
+}
+
+.otp-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.timer {
+    font-size: 0.9em;
+    color: var(--accent);
+    text-align: right;
+}
+
+.signup-button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.signup-button:hover {
+    background: var(--accent);
+}
+
+.signup-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.terms {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9em;
+}
+
+.terms a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.terms a:hover {
+    color: var(--accent);
+}

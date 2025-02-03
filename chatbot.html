@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="images/doctor.png" alt="Doctor Bot" class="bot-avatar1">
+            <h2>Health Assistant</h2>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <img src="images/doctor.png" alt="Doctor Bot" class="bot-avatar">
+                <div class="message-content">
+                    Hello! I'm your personal health assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator">
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+        </div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Type your health-related question...">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+
+    <script src="chatbot.js" defer></script>
+</body>
+</html>

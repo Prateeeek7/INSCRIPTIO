@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevention & Preparedness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="prevention.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Preparedness Checklist -->
+        <section class="section" id="checklist">
+            <h2><i class="fas fa-clipboard-check"></i> Preparedness Checklist</h2>
+            <div id="checklistItems">
+                <!-- Items will be added dynamically -->
+            </div>
+            <button class="btn" onclick="addChecklistItem()">Add Item</button>
+        </section>
+
+        <!-- Symptoms Checker -->
+        <section class="section" id="symptoms">
+            <h2><i class="fas fa-stethoscope"></i> AI Symptoms Checker</h2>
+            <form class="symptoms-form" onsubmit="checkSymptoms(event)">
+                <textarea class="symptom-input" placeholder="Describe your symptoms in detail..." rows="4"></textarea>
+                <button type="submit" class="btn">Analyze Symptoms</button>
+            </form>
+            <div id="symptomsResult"></div>
+        </section>
+
+        <!-- Health Protocols -->
+        <section class="section" id="protocols">
+            <h2><i class="fas fa-shield-virus"></i> Health Protocols</h2>
+            <div id="protocolsList">
+                <!-- Protocols will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Emergency Contacts -->
+        <section class="section" id="contacts">
+            <h2><i class="fas fa-phone-alt"></i> Emergency Contacts</h2>
+            <form onsubmit="addContact(event)">
+                <input class="in" type="text" placeholder="Name" id="contactName" required>
+                <input class="in"type="tel" placeholder="Phone Number" id="contactPhone" required>
+                <input class="in"type="text" placeholder="Relationship" id="contactRelation">
+                <button type="submit" class="btn">Add Contact</button>
+            </form>
+            <div id="contactsList"></div>
+        </section>
+    </div>
+
+    <script src="prevention.js" defer></script>
+</body>
+</html>
